@@ -13,7 +13,6 @@ export const BlogPostTemplate = ({
   tags,
   title,
   helmet,
-  fields,
 }) => {
   const PostContent = contentComponent || Content
 
@@ -41,18 +40,7 @@ export const BlogPostTemplate = ({
               </div>
             ) : null}
 
-            {fields && fields.length ? (
-              <div style={{ marginTop: `4rem` }}>
-                <h4>Fields</h4>
-                <ul className="taglist">
-                  {fields.map(field => (
-                    <li key={field + `field`}>
-                      {field}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            ) : null}
+            'FIELDS'
           </div>
         </div>
       </div>
@@ -87,7 +75,6 @@ const BlogPost = ({ data }) => {
           </Helmet>
         }
         tags={post.frontmatter.tags}
-        fields={post.frontmatter.fields}
         title={post.frontmatter.title}
       />
     </Layout>
@@ -112,7 +99,6 @@ export const pageQuery = graphql`
         title
         description
         tags
-        fields
       }
     }
   }
