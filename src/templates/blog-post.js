@@ -13,12 +13,13 @@ export const BlogPostTemplate = ({
   tags,
   title,
   helmet,
+  fields,
 }) => {
   const PostContent = contentComponent || Content
 
   return (
     <section className="section">
-      {helmet || ''}
+      {helmet || ""}
       <div className="container content">
         <div className="columns">
           <div className="column is-10 is-offset-1">
@@ -39,11 +40,24 @@ export const BlogPostTemplate = ({
                 </ul>
               </div>
             ) : null}
+
+            {fields && fields.length ? (
+              <div style={{ marginTop: `4rem` }}>
+                <h4>Fields</h4>
+                <ul className="taglist">
+                  {fields.map(field => (
+                    <li key={field + `field`}>
+                      {field}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ) : null}
           </div>
         </div>
       </div>
     </section>
-  )
+  );
 }
 
 BlogPostTemplate.propTypes = {
@@ -73,6 +87,7 @@ const BlogPost = ({ data }) => {
           </Helmet>
         }
         tags={post.frontmatter.tags}
+        fields={post.frontmatter.fields}
         title={post.frontmatter.title}
       />
     </Layout>
@@ -97,6 +112,7 @@ export const pageQuery = graphql`
         title
         description
         tags
+        fields
       }
     }
   }
