@@ -6,7 +6,6 @@ class BlogRoll extends React.Component {
   render() {
     const { data } = this.props;
     const { edges: posts } = data.allMarkdownRemark;
-
     return (
       <div className="columns is-multiline">
         {posts &&
@@ -20,8 +19,6 @@ class BlogRoll extends React.Component {
                 <header>
                   {post.frontmatter.featuredimage ? (
                     <div className="featured-thumbnail">
-
-                      BLOG ROLL PAGE
                     </div>
                   ) : null}
                   <p className="post-meta">
