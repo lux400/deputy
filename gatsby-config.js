@@ -1,12 +1,32 @@
 module.exports = {
   siteMetadata: {
-    title: 'Gatsby + Netlify CMS Starter',
+    title: 'Marisa Morby · Transformation Designer and UX Researcher',
+    titleTemplate: '%s · Marisa Morby',
     description:
-      'This repo contains an example business website that is built with Gatsby, and Netlify CMS.It follows the JAMstack architecture by using Git as a single source of truth, and Netlify for continuous deployment, and CDN distribution.',
+      'Marisa Morby is a product manager, user experience researcher, designer, and strategist living in Portland, OR.',
+    url: 'https://marisamorby.com', // no trailing slash!
+    image: '/images/marisa-morby.jpg',
+    owner: 'Marisa Morby',
+    twitterUsername: '@marisamorby',
+    facebookAppID: '',
+    nav: [
+      { path: 'https://medium.com/@marisamorby', name: 'Blog', hidden: true },
+      { path: '/#about', name: 'About' },
+      { path: '/#process', name: 'Process' },
+      { path: '/#speaking', name: 'Speaking' },
+      { path: '/#contact', name: 'Contact' },
+    ],
+    categories: [
+      { slug: 'confidence', name: 'Confidence' },
+      { slug: 'better-humans', name: 'Better Humans' },
+      { slug: 'business-basics', name: 'Business Basics' },
+      { slug: 'uncomfortable-things', name: 'Uncomfortable Things' },
+    ],
   },
   plugins: [
     'gatsby-plugin-react-helmet',
     'gatsby-plugin-sass',
+    'gatsby-plugin-styled-components',
     {
       // keep as first gatsby-source-filesystem plugin for gatsby image support
       resolve: 'gatsby-source-filesystem',
@@ -65,13 +85,7 @@ module.exports = {
         modulePath: `${__dirname}/src/cms/cms.js`,
       },
     },
-    {
-      resolve: 'gatsby-plugin-purgecss', // purges all unused/unreferenced css rules
-      options: {
-        develop: true, // Activates purging in npm run develop
-        purgeOnly: ['/all.sass'], // applies purging only on the bulma css file
-      },
-    }, // must be after other CSS plugins
+
     'gatsby-plugin-netlify', // make sure to keep it last in the array
   ],
-}
+};
