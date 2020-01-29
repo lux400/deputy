@@ -42,12 +42,12 @@ class VideoRoll extends React.Component {
                   </header>
                   <video controls preload="none">
                     <source
-                      src={video.frontmatter.videoSrc.publicURL}
+                      src={video.frontmatter.video.publicURL}
                       type="video/mp4"
                     />
                   </video>
                   {/*<VideoThumbnail*/}
-                    {/*videoUrl={video.frontmatter.videoSrc.publicURL}*/}
+                    {/*videoUrl={video.frontmatter.video.publicURL}*/}
                     {/*snapshotAtTime={44}*/}
                     {/*width="100%"*/}
                   {/*/>*/}
@@ -96,7 +96,7 @@ export default () => (
                 templateKey
                 date(formatString: "MMMM DD, YYYY")
                 featuredpost
-                videoSrc {
+                video {
                   publicURL
                 }
                 featuredimage {
