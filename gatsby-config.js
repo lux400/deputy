@@ -1,3 +1,5 @@
+const config = require('./webpack.config');
+
 module.exports = {
   siteMetadata: {
     title: 'Marisa Morby · Transformation Designer and UX Researcher',
@@ -27,6 +29,10 @@ module.exports = {
     'gatsby-plugin-react-helmet',
     'gatsby-plugin-sass',
     'gatsby-plugin-styled-components',
+    {
+      resolve: `gatsby-plugin-alias-imports`,
+      options: config.resolve,
+    },
     {
       // keep as first gatsby-source-filesystem plugin for gatsby image support
       resolve: 'gatsby-source-filesystem',

@@ -22,15 +22,17 @@ const media = Object.keys(sizes).reduce(
 );
 
 const theme = {
-  color: {},
+  color: {
+    main: '#f6e5f5',
+  },
   font: {},
   media,
   fontSize,
   spacing: {
     sm: 10,
     md: 15,
-    lg: 20
-  }
+    lg: 20,
+  },
 };
 
 export default theme;

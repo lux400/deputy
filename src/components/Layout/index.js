@@ -1,8 +1,9 @@
 import React from 'react';
-import Footer from '../components/Footer';
-import Navbar from './Navigation';
+import Footer from '../Footer';
+import Navbar from '../Navigation/index';
 import { ThemeProvider } from 'styled-components';
-import theme from '../utils/theme';
+import theme from '../../utils/theme';
+import GlobalStyles from './GlobalStyles';
 
 const Layout = ({ children }) => {
   return (
@@ -11,6 +12,8 @@ const Layout = ({ children }) => {
         <Navbar />
         <div>{children}</div>
         <Footer />
+        <GlobalStyles />
+
       </>
     </ThemeProvider>
   );

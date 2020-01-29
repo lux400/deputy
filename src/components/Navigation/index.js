@@ -1,12 +1,13 @@
 import React, { useState } from 'react';
-import { Link } from 'gatsby';
-import logo from '../../media/logo.svg';
-import Container from '../ui/Container';
-import Row from '../ui/Row';
+import logo from 'src/media/logo.svg';
+import Link from '@components/ui/Link';
+import Container from '@components/ui/Container';
+import Row from '@components/ui/Row';
+import { NavBox, Logo } from './styled';
 
-const Navigation = () => {
+const Navigation = props => {
   const [active, setActive] = useState(false);
-
+  console.log(props);
   const toggleHamburger = () => setActive(!active);
   return (
     <nav
@@ -14,11 +15,11 @@ const Navigation = () => {
       role="navigation"
       aria-label="main-navigation"
     >
-      <Row>
-        <Container fluid>
-          <div >
+      <Container fluid>
+        <Row>
+          <NavBox>
             <Link to="/" className="navbar-item" title="Logo">
-              <img src={logo} alt="Kaldi" style={{ width: '88px' }} />
+              <Logo src={logo} alt="Kaldi" style={{ width: '88px' }} />
             </Link>
             {/* Hamburger menu */}
             <div
@@ -30,31 +31,30 @@ const Navigation = () => {
               <span />
               <span />
             </div>
-          </div>
-          <div>
+
             <div className="navbar-start has-text-centered">
-              <Link className="navbar-item" to="/about">
+              <Link to="/about" activeClassName="active">
                 About
               </Link>
-              <Link className="navbar-item" to="/videos">
+              <Link to="/videos" activeClassName="active">
                 Videos
               </Link>
-              <Link className="navbar-item" to="/products">
+              <Link to="/products" activeClassName="active">
                 Products
               </Link>
-              <Link className="navbar-item" to="/blog">
+              <Link to="/blog" activeClassName="active">
                 Blog
               </Link>
-              <Link className="navbar-item" to="/contact">
+              <Link to="/contact" activeClassName="active">
                 Contact
               </Link>
-              <Link className="navbar-item" to="/contact/examples">
+              <Link to="/contact/examples" activeClassName="active">
                 Form Examples
               </Link>
             </div>
-          </div>
-        </Container>
-      </Row>
+          </NavBox>
+        </Row>
+      </Container>
     </nav>
   );
 };
