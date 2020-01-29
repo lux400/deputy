@@ -5,6 +5,8 @@ import Container from '@components/ui/Container';
 import Row from '@components/ui/Row';
 import { VideoBox, VideosContainer } from '@components/VideoRoll/styled';
 import VideoThumbnail from 'react-video-thumbnail'; // use npm published version
+import { Player, LoadingSpinner } from 'video-react';
+import "video-react/dist/video-react.css"; // import css
 
 class VideoRoll extends React.Component {
   render() {
@@ -40,12 +42,15 @@ class VideoRoll extends React.Component {
                       </span>
                     </p>
                   </header>
-                  <video controls>
-                    <source
-                      src={video.frontmatter.video.publicURL}
-                      type="video/mp4"
-                    />
-                  </video>
+                  <Player src={video.frontmatter.video.publicURL}>
+                    <LoadingSpinner />
+                  </Player>
+                  {/*<video controls>*/}
+                    {/*<source*/}
+                      {/*src={video.frontmatter.video.publicURL}*/}
+                      {/*type="video/mp4"*/}
+                    {/*/>*/}
+                  {/*</video>*/}
                   {/*<VideoThumbnail*/}
                     {/*videoUrl={video.frontmatter.video.publicURL}*/}
                     {/*snapshotAtTime={44}*/}
