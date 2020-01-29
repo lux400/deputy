@@ -40,7 +40,7 @@ class VideoRoll extends React.Component {
                       </span>
                     </p>
                   </header>
-                  <video controls preload="none">
+                  <video controls>
                     <source
                       src={video.frontmatter.video.publicURL}
                       type="video/mp4"
