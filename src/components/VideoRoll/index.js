@@ -12,7 +12,7 @@ class VideoRoll extends React.Component {
   render() {
     const { data } = this.props;
     let { edges: videos } = data.allMarkdownRemark;
-    videos = [videos[0], ];
+    console.log(videos);
     return (
       <Container fluid>
         <Row>
@@ -42,7 +42,7 @@ class VideoRoll extends React.Component {
                       </span>
                     </p>
                   </header>
-                  <Player src={video.frontmatter.video.publicURL}>
+                  <Player src={video.frontmatter.video}>
                     <LoadingSpinner />
                   </Player>
                   {/*<video controls>*/}
@@ -101,9 +101,7 @@ export default () => (
                 templateKey
                 date(formatString: "MMMM DD, YYYY")
                 featuredpost
-                video {
-                  publicURL
-                }
+                video
                 featuredimage {
                   childImageSharp {
                     fluid(maxWidth: 120, quality: 100) {
