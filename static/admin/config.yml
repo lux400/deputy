@@ -54,10 +54,15 @@ collections:
       - { label: "Title", name: "title", widget: "string" }
       - { label: "Formatted slug", name: "formattedSlug", widget: "translite" }
       - { label: "Publish Date", name: "date", widget: "datetime" }
-      - { label: "Description", name: "description", widget: "text" }
-      - { label: "Video", name: "video", widget: "file" }
-      - { label: "Poster", name: "poster", widget: "file" }
-      - { label: "Body", name: "body", widget: "markdown" }
+      - {
+          label: "Description",
+          name: "description",
+          widget: "text",
+          required: false,
+        }
+      - { label: "Video", name: "video", widget: "file", required: false }
+      - { label: "Poster", name: "poster", widget: "file", required: false }
+      - { label: "Body", name: "body", widget: "markdown", required: false }
 
   - name: "pages"
     label: "Pages"

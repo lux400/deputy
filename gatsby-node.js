@@ -2,6 +2,9 @@ const _ = require("lodash");
 const path = require("path");
 const { createFilePath } = require("gatsby-source-filesystem");
 const { fmImagesToRelative } = require("gatsby-remark-relative-images");
+import Cyrillic from "cyrillic-to-translit-js";
+
+const cyrillicToTranslit = new Cyrillic({ preset: "uk" });
 
 exports.createPages = ({ actions, graphql }) => {
   const { createPage } = actions;
@@ -56,7 +59,7 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
     createNodeField({
       name: `slug`,
       node,
-      value: value.toUpperCase()
+      value: cyrillicToTranslit(value, "-")
     });
   }
 };
