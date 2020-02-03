@@ -9,6 +9,14 @@ export class TransliteControl extends React.Component {
     view: "",
     formatted: ""
   };
+
+  componentDidMount() {
+    console.log(typeof this.props.value);
+    if (this.props.value) {
+      this.setState({ view: this.props.value.getIn(["view"]) });
+    }
+  }
+
   onChange = value => {
     console.log(this.props);
 
@@ -23,6 +31,7 @@ export class TransliteControl extends React.Component {
     );
   };
   render() {
+    console.log(this.props);
     return (
       <StringControl.control
         {...this.props}

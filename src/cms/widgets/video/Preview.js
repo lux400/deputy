@@ -9,5 +9,5 @@ export const TranslitePreview = props => {
   console.log(props);
   console.log(props);
   console.log(props);
-  return <StringControl.preview {...props} value={props.value.a} />;
+  return <StringControl.preview {...props} value={props.value.view} />;
 };
