@@ -1,8 +1,13 @@
-import * as React from 'react';
+import * as React from "react";
 import CMS from "netlify-cms-app";
-const FileControl = CMS.getWidget('file')
+const StringControl = CMS.getWidget("string");
 
-export const VideoPreview = (props) => {
+export const TranslitePreview = props => {
   console.log(props);
-  return <FileControl.preview {...props} />;
+  console.log(props);
+  console.log(props);
+  console.log(props);
+  console.log(props);
+  console.log(props);
+  return <StringControl.preview {...props} value={props.value.a} />;
 };

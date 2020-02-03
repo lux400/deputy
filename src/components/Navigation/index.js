@@ -1,32 +1,24 @@
-import React, { useState } from 'react';
-import logo from 'src/media/logo.svg';
-import Link from '@components/ui/Link';
-import Container from '@components/ui/Container';
-import Row from '@components/ui/Row';
-import { NavBox, Logo } from './styled';
+import React, { useState } from "react";
+import logo from "src/media/logo.svg";
+import Link from "@components/ui/Link";
+import Container from "@components/ui/Container";
+import Row from "@components/ui/Row";
+import { NavBox, Logo } from "./styled";
 
 const Navigation = props => {
   const [active, setActive] = useState(false);
   console.log(props);
   const toggleHamburger = () => setActive(!active);
   return (
-    <nav
-      className="navbar is-transparent"
-      role="navigation"
-      aria-label="main-navigation"
-    >
+    <nav role="navigation" aria-label="main-navigation">
       <Container fluid>
         <Row>
           <NavBox>
-            <Link to="/" className="navbar-item" title="Logo">
-              <Logo src={logo} alt="Kaldi" style={{ width: '88px' }} />
+            <Link to="/" title="Logo">
+              <Logo src={logo} alt="Kaldi" style={{ width: "88px" }} />
             </Link>
             {/* Hamburger menu */}
-            <div
-              className={`navbar-burger burger`}
-              data-target="navMenu"
-              onClick={() => toggleHamburger()}
-            >
+            <div data-target="navMenu" onClick={() => toggleHamburger()}>
               <span />
               <span />
               <span />

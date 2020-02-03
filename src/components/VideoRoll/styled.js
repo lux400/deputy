@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 export const VideoBox = styled.article(
   ({ theme }) => `
@@ -13,9 +13,20 @@ export const VideoBox = styled.article(
   flex: 0 0 31.33333%;
   margin: 1%
   `}
-`,
+`
 );
 export const VideosContainer = styled.div`
   display: flex;
   flex-wrap: wrap;
+`;
+
+export const PosterBlock = styled.div`
+  height: 200px;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  img {
+    position: absolute;
+  }
 `;

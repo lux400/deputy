@@ -1,11 +1,15 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import { Link, graphql, StaticQuery } from 'gatsby';
-import Container from '@components/ui/Container';
-import Row from '@components/ui/Row';
-import { VideoBox, VideosContainer } from '@components/VideoRoll/styled';
-import VideoThumbnail from 'react-video-thumbnail'; // use npm published version
-import { Player, LoadingSpinner } from 'video-react';
+import React from "react";
+import PropTypes from "prop-types";
+import { Link, graphql, StaticQuery } from "gatsby";
+import Container from "@components/ui/Container";
+import Row from "@components/ui/Row";
+import {
+  VideoBox,
+  VideosContainer,
+  PosterBlock
+} from "@components/VideoRoll/styled";
+import VideoThumbnail from "react-video-thumbnail"; // use npm published version
+import { Player, LoadingSpinner } from "video-react";
 import "video-react/dist/video-react.css"; // import css
 
 class VideoRoll extends React.Component {
@@ -22,48 +26,18 @@ class VideoRoll extends React.Component {
                 <VideoBox
                   key={video.id}
                   className={`blog-list-item tile is-child box notification ${
-                    video.frontmatter.featuredpost ? 'is-featured' : ''
+                    video.frontmatter.featuredpost ? "is-featured" : ""
                   }`}
                 >
-                  <header>
-                    {video.frontmatter.featuredimage ? (
-                      <div className="featured-thumbnail" />
-                    ) : null}
-                    <p className="post-meta">
-                      <Link
-                        className="title has-text-primary is-size-4"
-                        to={video.fields.slug}
-                      >
-                        {video.frontmatter.title}
-                      </Link>
-                      <span> &bull; </span>
-                      <span className="subtitle is-size-5 is-block">
-                        {video.frontmatter.date}
-                      </span>
-                    </p>
-                  </header>
-                  <Player src={video.frontmatter.video}>
-                    <LoadingSpinner />
-                  </Player>
-                  {/*<video controls>*/}
-                    {/*<source*/}
-                      {/*src={video.frontmatter.video.publicURL}*/}
-                      {/*type="video/mp4"*/}
-                    {/*/>*/}
-                  {/*</video>*/}
-                  {/*<VideoThumbnail*/}
-                    {/*videoUrl={video.frontmatter.video.publicURL}*/}
-                    {/*snapshotAtTime={44}*/}
-                    {/*width="100%"*/}
-                  {/*/>*/}
-                  <p>
-                    {video.excerpt}
-                    <br />
-                    <br />
-                    <Link className="button" to={video.fields.slug}>
-                      Keep Reading →
-                    </Link>
-                  </p>
+                  <Link
+                    className="title has-text-primary is-size-4"
+                    to={video.fields.slug}
+                  >
+                    <PosterBlock>
+                      <img src={video.frontmatter.poster} />
+                    </PosterBlock>
+                  </Link>
+                  <p>{video.frontmatter.description}</p>
                 </VideoBox>
               ))}
           </VideosContainer>
@@ -76,9 +50,9 @@ class VideoRoll extends React.Component {
 VideoRoll.propTypes = {
   data: PropTypes.shape({
     allMarkdownRemark: PropTypes.shape({
-      edges: PropTypes.array,
-    }),
-  }),
+      edges: PropTypes.array
+    })
+  })
 };
 
 export default () => (
@@ -102,6 +76,8 @@ export default () => (
                 date(formatString: "MMMM DD, YYYY")
                 featuredpost
                 video
+                poster
+                description
                 featuredimage {
                   childImageSharp {
                     fluid(maxWidth: 120, quality: 100) {
