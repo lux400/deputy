@@ -2,7 +2,7 @@ const _ = require("lodash");
 const path = require("path");
 const { createFilePath } = require("gatsby-source-filesystem");
 const { fmImagesToRelative } = require("gatsby-remark-relative-images");
-import Cyrillic from "cyrillic-to-translit-js";
+const Cyrillic = require("cyrillic-to-translit-js");
 
 const cyrillicToTranslit = new Cyrillic({ preset: "uk" });
 
