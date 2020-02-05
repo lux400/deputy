@@ -17,12 +17,3 @@ CMS.registerPreviewTemplate("index", IndexPagePreview);
 CMS.registerPreviewTemplate("about", AboutPagePreview);
 CMS.registerPreviewTemplate("blog", BlogPostPreview);
 CMS.registerPreviewTemplate("video", VideoPostPreview);
-
-// CMS.registerWidgetValueSerializer("string", (a, b) => {
-//   console.log(123123);
-//   return () => {
-//     console.log(23424);
-//   };
-// });
-// console.log(CMS.getWidgetValueSerializer("string"));
-// console.log(CMS);

@@ -56,7 +56,7 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
 
   if (node.internal.type === `MarkdownRemark`) {
     const value = createFilePath({ node, getNode });
-    console.log(value);
+
     createNodeField({
       name: `slug`,
       node,
@@ -64,16 +64,3 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
     });
   }
 };
-
-exports.onPreInit = () => {
-  console.log("PRE INIT");
-  console.log("PRE INIT");
-  console.log("PRE INIT");
-  console.log("PRE INIT");
-  console.log("PRE INIT");
-  console.log("PRE INIT");
-  console.log(process.env);
-  console.log("PRE INIT");
-  console.log("PRE INIT");
-  console.log("PRE INIT");
-}

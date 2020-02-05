@@ -15,7 +15,7 @@ media_library:
   name: cloudinary
   config:
     output_filename_only: false
-    api_key: "${CLOUDINARY_API_KEY}"
+    api_key: 431876271444466
     cloud_name: dpj6vngpr
 
 collections:
