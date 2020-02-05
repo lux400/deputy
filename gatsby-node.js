@@ -35,6 +35,9 @@ exports.createPages = ({ actions, graphql }) => {
       const id = edge.node.id;
       createPage({
         path: cyrillicToTranslit.transform(edge.node.fields.slug, "-"),
+
+
+
         component: path.resolve(
           `src/templates/${String(edge.node.frontmatter.templateKey)}.js`
         ),
