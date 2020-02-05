@@ -64,3 +64,16 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
     });
   }
 };
+
+exports.onPreInit = () => {
+  console.log("PRE INIT");
+  console.log("PRE INIT");
+  console.log("PRE INIT");
+  console.log("PRE INIT");
+  console.log("PRE INIT");
+  console.log("PRE INIT");
+  console.log(process.env);
+  console.log("PRE INIT");
+  console.log("PRE INIT");
+  console.log("PRE INIT");
+}
