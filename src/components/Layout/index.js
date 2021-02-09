@@ -9,18 +9,9 @@ import GlobalStyles from './GlobalStyles';
 import Footer from '../Footer';
 import Navbar from '../Navigation';
 
-import '@formatjs/intl-pluralrules/polyfill';
-import '@formatjs/intl-datetimeformat/polyfill';
-import '@formatjs/intl-numberformat/polyfill';
-import '@formatjs/intl-relativetimeformat/polyfill-force';
-
-import '@formatjs/intl-numberformat/locale-data/uk';
-import '@formatjs/intl-datetimeformat/locale-data/uk';
-import '@formatjs/intl-pluralrules/locale-data/uk';
-import '@formatjs/intl-relativetimeformat/locale-data/uk';
-import '@formatjs/intl-relativetimeformat/locale-data/en-US';
-
 import 'intl';
+
+
 import 'bootstrap/dist/css/bootstrap-grid.css';
 
 const getCurrentLangKey = (languages, defaultLangKey, url) =>
