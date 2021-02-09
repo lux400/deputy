@@ -1,22 +1,23 @@
-import React from 'react'
+import React from 'react';
 
-import Layout from '../../components/Layout'
-import VideoRoll from '../../components/VideoRoll'
-import SEO from "../../components/SEO";
+import Layout from '../../components/Layout';
+import VideoRoll from '../../components/VideoRoll';
+import SEO from '@components/Layout/SEO';
 
-export default class BlogIndexPage extends React.Component {
-  render() {
-    return (
-      <Layout >
-        <SEO title={"VIDE TITLE"}/>
-        <section className="section">
-          <div className="container">
-            <div className="content">
-              <VideoRoll />
-            </div>
+const VideoIndexPage = props => {
+  console.log(props);
+  return (
+    <Layout {...props}>
+      <SEO title={'Videos'}/>
+      <section className="section">
+        <div className="container">
+          <div className="content">
+            <VideoRoll />
           </div>
-        </section>
-      </Layout>
-    )
-  }
-}
+        </div>
+      </section>
+    </Layout>
+  );
+};
+
+export default VideoIndexPage;

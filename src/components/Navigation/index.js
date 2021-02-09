@@ -1,51 +1,57 @@
-import React, { useState } from "react";
-import logo from "src/media/logo.svg";
-import Link from "@components/ui/Link";
-import Container from "@components/ui/Container";
-import Row from "@components/ui/Row";
-import { NavBox, Logo } from "./styled";
+import React from 'react';
+import { Container, Link, Row } from '@components/ui';
+import { FormattedMessage } from 'react-intl';
+import clientRoutes from 'src/constants/clientRoutes';
+import { AdditionalBox, HeaderBox, HomeLink, NavBox } from './styled';
 
-const Navigation = props => {
-  const [active, setActive] = useState(false);
-  console.log(props);
-  const toggleHamburger = () => setActive(!active);
+const transformLink = (langKey, defaultLangKey) => url =>
+  langKey === defaultLangKey ? url : `/${langKey}${url}`;
+
+const Navigation = ({ homeLink, langKey, defaultLangKey, languagesMenu }) => {
+  const links = languagesMenu.map(lang => {
+    const linkTo =
+      lang.link.includes(clientRoutes.blog) && langKey === defaultLangKey
+        ? `/${lang.langKey}/`.replace(`/${defaultLangKey}/`, '/')
+        : lang.link;
+    return (
+      <Link
+        to={linkTo}
+        key={lang.langKey}
+        style={{
+          color: 'black',
+        }}
+      >
+        <li selected={lang.selected}>{lang.langKey}</li>
+      </Link>
+    );
+  });
+
+  const getLink = transformLink(langKey, defaultLangKey);
+
   return (
     <nav role="navigation" aria-label="main-navigation">
-      <Container fluid>
-        <Row>
+      <Container>
+        <HeaderBox>
           <NavBox>
-            <Link to="/" title="Logo">
-              <Logo src={logo} alt="Kaldi" style={{ width: "88px" }} />
-            </Link>
-            {/* Hamburger menu */}
-            <div data-target="navMenu" onClick={() => toggleHamburger()}>
-              <span />
-              <span />
-              <span />
-            </div>
+            <HomeLink to={homeLink}>
+              <FormattedMessage id="name" />
+            </HomeLink>
 
-            <div className="navbar-start has-text-centered">
-              <Link to="/about" activeClassName="active">
-                About
-              </Link>
-              <Link to="/videos" activeClassName="active">
-                Videos
-              </Link>
-              <Link to="/products" activeClassName="active">
-                Products
-              </Link>
-              <Link to="/blog" activeClassName="active">
-                Blog
-              </Link>
-              <Link to="/contact" activeClassName="active">
-                Contact
-              </Link>
-              <Link to="/contact/examples" activeClassName="active">
-                Form Examples
-              </Link>
-            </div>
+            <Link to={getLink(clientRoutes.about)} activeClassName="active">
+              <FormattedMessage id="bio" />
+            </Link>
+
+            <Link to={getLink(clientRoutes.videos)} activeClassName="active">
+              <FormattedMessage id="videos" />
+            </Link>
+
+            <Link to={getLink(clientRoutes.blog)} activeClassName="active">
+              <FormattedMessage id="blog" />
+            </Link>
           </NavBox>
-        </Row>
+
+          <AdditionalBox>{links}</AdditionalBox>
+        </HeaderBox>
       </Container>
     </nav>
   );

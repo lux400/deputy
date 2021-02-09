@@ -5,6 +5,7 @@ import Helmet from 'react-helmet';
 import { graphql } from 'gatsby';
 import Layout from '../components/Layout';
 import Content, { HTMLContent } from '../components/Content';
+import { PosterBlock } from '@components/VideoRoll/styled';
 
 export const VideoPostTemplate = ({
   content,
@@ -13,9 +14,12 @@ export const VideoPostTemplate = ({
   tags,
   title,
   helmet,
+  video,
+
+  ...props
 }) => {
   const PostContent = contentComponent || Content;
-
+  console.log(video);
   return (
     <section className="section">
       {helmet || ''}
@@ -25,7 +29,13 @@ export const VideoPostTemplate = ({
             <h1 className="title is-size-2 has-text-weight-bold is-bold-light">
               {title}
             </h1>
-            123123123
+            <video width="400" height="300" controls="controls">
+              <source
+                src={video}
+                type='video/mp4; codecs="avc1.42E01E, mp4a.40.2"'
+              />
+            </video>
+
             <p>{description}</p>
             <PostContent content={content} />
           </div>
@@ -43,11 +53,11 @@ VideoPostTemplate.propTypes = {
   helmet: PropTypes.object,
 };
 
-const VideoPost = ({ data }) => {
+const VideoPost = ({ data, ...props }) => {
   const { markdownRemark: post } = data;
 
   return (
-    <Layout>
+    <Layout {...props}>
       <VideoPostTemplate
         content={post.html}
         contentComponent={HTMLContent}
@@ -63,6 +73,7 @@ const VideoPost = ({ data }) => {
         }
         tags={post.frontmatter.tags}
         title={post.frontmatter.title}
+        video={post.frontmatter.video}
       />
     </Layout>
   );
@@ -85,6 +96,7 @@ export const pageQuery = graphql`
         date(formatString: "MMMM DD, YYYY")
         title
         description
+        video
       }
     }
   }

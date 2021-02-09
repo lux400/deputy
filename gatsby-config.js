@@ -1,14 +1,17 @@
 const config = require('./webpack.config');
+const languages = require('./src/translations/languages');
 
 module.exports = {
   siteMetadata: {
-    title: 'Marisa Morby · Transformation Designer and UX Researcher',
-    titleTemplate: '%s · Marisa Morby',
+    languages,
+
+    title: 'Maryna Bardina · Transformation Designer and UX Researcher',
+    titleTemplate: '%s · Maryna Bardina',
     description:
-      'Marisa Morby is a product manager, user experience researcher, designer, and strategist living in Portland, OR.',
+      'Maryna Bardina is a product manager, user experience researcher, designer, and strategist living in Portland, OR.',
     url: 'https://marisamorby.com', // no trailing slash!
     image: '/images/marisa-morby.jpg',
-    owner: 'Marisa Morby',
+    owner: 'Maryna Bardina',
     twitterUsername: '@marisamorby',
     facebookAppID: '',
     nav: [
@@ -93,5 +96,6 @@ module.exports = {
     },
 
     'gatsby-plugin-netlify', // make sure to keep it last in the array
+
   ],
 };

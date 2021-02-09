@@ -4,7 +4,6 @@ import { VideoPostTemplate } from 'src/templates/video-post';
 
 const BlogPostPreview = ({ entry, widgetFor }) => {
   const tags = entry.getIn(['data', 'tags']);
-  console.log(entry.toJS());
   return (
     <VideoPostTemplate
       content={widgetFor('body')}

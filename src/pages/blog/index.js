@@ -1,38 +1,65 @@
-import React from 'react'
+import React from 'react';
+import PropTypes from 'prop-types';
+import { graphql } from 'gatsby';
+import Layout from 'src/components/Layout';
+import Content, { HTMLContent } from 'src/components/Content';
+import SEO from '@components/Layout/SEO';
+import BlogRoll from '@components/BlogRoll';
+import { FormattedMessage } from 'react-intl';
 
-import Layout from '../../components/Layout'
-import BlogRoll from '../../components/BlogRoll'
+export const AboutPageTemplate = ({ title, content, contentComponent }) => {
+  const PageContent = contentComponent || Content;
 
-export default class BlogIndexPage extends React.Component {
-  render() {
-    return (
-      <Layout>
-        <div
-          className="full-width-image-container margin-top-0"
-          style={{
-            backgroundImage: `url('/media/blog-index.jpg')`,
-          }}
-        >
-          <h1
-            className="has-text-weight-bold is-size-1"
-            style={{
-              boxShadow: '0.5rem 0 0 #f40, -0.5rem 0 0 #f40',
-              backgroundColor: '#f40',
-              color: 'white',
-              padding: '1rem',
-            }}
-          >
-            Latest Stories
-          </h1>
-        </div>
-        <section className="section">
-          <div className="container">
-            <div className="content">
-              <BlogRoll />
-            </div>
-          </div>
-        </section>
-      </Layout>
-    )
+  return (
+    <section>
+      <h2>{title}</h2>
+      <PageContent content={content} />
+    </section>
+  );
+};
+
+AboutPageTemplate.propTypes = {
+  title: PropTypes.string.isRequired,
+  content: PropTypes.string,
+  contentComponent: PropTypes.func,
+};
+
+const AboutPage = ({ pageContext: { locale }, ...props }) => {
+  console.log(locale);
+  console.log(props);
+  return (
+    <Layout {...props}>
+      <FormattedMessage id="blog"/>
+      <BlogRoll  {...props}  />
+    </Layout>
+  );
+};
+
+AboutPage.propTypes = {
+  data: PropTypes.object.isRequired,
+};
+
+export default AboutPage;
+
+
+export const pageQuery = graphql`
+  query HomeContent($locale: String) {
+
+    posts: allMarkdownRemark(
+      filter: { frontmatter: { templateKey: { eq: "blog-post" }, locale: { eq: $locale } } }
+    ) {
+      edges {
+        node {
+          fields {
+            slug
+          }
+          frontmatter {
+            title
+            description
+            date
+          }
+        }
+      }
+    }
   }
-}
+`

@@ -2,6 +2,22 @@ import React from 'react';
 import { Helmet } from 'react-helmet';
 import PropTypes from 'prop-types';
 import { StaticQuery, graphql } from 'gatsby';
+
+const query = graphql`
+  query SEO {
+    site {
+      siteMetadata {
+        defaultTitle: title
+        titleTemplate
+        defaultDescription: description
+        siteUrl: url
+        defaultImage: image
+        twitterUsername
+      }
+    }
+  }
+`;
+
 const SEO = ({ title, description, image, pathname, article }) => (
   <StaticQuery
     query={query}
@@ -23,17 +39,39 @@ const SEO = ({ title, description, image, pathname, article }) => (
         image: `${siteUrl}${image || defaultImage}`,
         url: `${siteUrl}${pathname || '/'}`,
       };
+
       return (
         <>
           <Helmet title={seo.title} titleTemplate={titleTemplate}>
             <html lang="en" />
             <meta charSet="utf-8" />
-            <meta name="viewport" content="initial-scale=1.0, width=device-width" />
-            <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
-            <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
-            <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+            <meta
+              name="viewport"
+              content="initial-scale=1.0, width=device-width"
+            />
+            <link
+              rel="apple-touch-icon"
+              sizes="180x180"
+              href="/apple-touch-icon.png"
+            />
+            <link
+              rel="icon"
+              type="image/png"
+              sizes="32x32"
+              href="/favicon-32x32.png"
+            />
+            <link
+              rel="icon"
+              type="image/png"
+              sizes="16x16"
+              href="/favicon-16x16.png"
+            />
             <link rel="manifest" href="/manifest.json" />
-            <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#39bbdf" />
+            <link
+              rel="mask-icon"
+              href="/safari-pinned-tab.svg"
+              color="#39bbdf"
+            />
             <meta name="msapplication-TileColor" content="#39bbdf" />
             <meta name="theme-color" content="#ffffff" />
 
@@ -63,7 +101,9 @@ const SEO = ({ title, description, image, pathname, article }) => (
     }}
   />
 );
+
 export default SEO;
+
 SEO.propTypes = {
   title: PropTypes.string,
   description: PropTypes.string,
@@ -71,6 +111,7 @@ SEO.propTypes = {
   pathname: PropTypes.string,
   article: PropTypes.bool,
 };
+
 SEO.defaultProps = {
   title: null,
   description: null,
@@ -78,17 +119,3 @@ SEO.defaultProps = {
   pathname: null,
   article: false,
 };
-const query = graphql`
-  query SEO {
-    site {
-      siteMetadata {
-        defaultTitle: title
-        titleTemplate
-        defaultDescription: description
-        siteUrl: url
-        defaultImage: image
-        twitterUsername
-      }
-    }
-  }
-`;

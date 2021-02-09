@@ -2,11 +2,12 @@ import styled from 'styled-components';
 import { Link } from 'gatsby';
 
 export default styled(Link)(
-  () => `
-  color: #444;
+  ({ theme }) => `
+  color: ${theme.color.primary};
   text-decoration: none;
-  &.active {
-    color: #bbb;
-  }
+  &:active {
+    color: ${theme.color.main};
+
+  }  
 `,
 );

@@ -54,11 +54,11 @@ BlogPostTemplate.propTypes = {
   helmet: PropTypes.object,
 };
 
-const BlogPost = ({ data }) => {
+const BlogPost = ({ data , ...props}) => {
   const { markdownRemark: post } = data;
 
   return (
-    <Layout>
+    <Layout {...props}  >
       <BlogPostTemplate
         content={post.html}
         contentComponent={HTMLContent}
